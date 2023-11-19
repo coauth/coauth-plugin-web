@@ -1,0 +1,19 @@
+{
+  "files": [],
+  /* custom added for import.meta that was causing error highlight in router index.ts */
+  "compilerOptions": {
+    "module": "es2022",
+    "moduleResolution": "Node"
+  },
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ]
+}
