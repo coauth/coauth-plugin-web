@@ -64,8 +64,8 @@ const verifyRequest=async () => {
     isSubmitLoading.value=false;
     showModule.value=false;
     showSuccess.value=true;
+    callParentTransactionComplete();
   } catch (error:any) {
-    isModuleError.value=true;
     if (error.response && error.response.status === 400) {
       submitErrorMessage.value = error.response.data.error.message;
     }else {
@@ -74,6 +74,13 @@ const verifyRequest=async () => {
 
     console.log(error);
     isSubmitLoading.value=false;
+  }
+}
+
+const callParentTransactionComplete=()=>{
+
+  if(window.parent){
+    window.parent.postMessage('transactionComplete', '*');
   }
 }
 

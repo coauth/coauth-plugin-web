@@ -55,6 +55,7 @@ const verifyRequest=async () => {
     if (response.status === 200) {
       showModule.value=false;
       showSuccess.value=true;
+      callParentTransactionComplete();
     } else {
       submitErrorMessage.value=response.data.error.message;
     }
@@ -62,7 +63,6 @@ const verifyRequest=async () => {
     showModule.value=false;
     showSuccess.value=true;
   } catch (error:any) {
-    isModuleError.value=true;
     if (error.response && error.response.status === 400) {
       submitErrorMessage.value = error.response.data.error.message;
     }else {
@@ -72,6 +72,13 @@ const verifyRequest=async () => {
     console.log(error);
     isSubmitLoading.value=false;
   }
+}
+
+const callParentTransactionComplete=()=>{
+
+if(window.parent){
+  window.parent.postMessage('transactionComplete', '*');
+}
 }
 
 onMounted(() => {
