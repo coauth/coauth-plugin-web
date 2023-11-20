@@ -20,3 +20,4 @@ RUN npm run build
 
 EXPOSE 8080
 CMD [ "http-server", "dist" ]
+#CMD [ "http-server", "dist", "-c-1", "-a", "0.0.0.0", "-p", "8080", "--proxy", "http://localhost:8080/ui" ]
